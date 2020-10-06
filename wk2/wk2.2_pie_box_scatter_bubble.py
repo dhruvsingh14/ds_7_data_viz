@@ -91,7 +91,7 @@ type(df_can.groupby('Continent', axis=0))
 df_continents.head()
 
 # autopct is a way to calculate and represent proportions
-"""
+
 df_continents['Total'].plot(kind='pie',
                             figsize=(5,6),
                             autopct='%1.1f%%', # adding in percentages
@@ -103,10 +103,10 @@ plt.title('Immigration to Canada by Continent [1980 - 2013]')
 plt.axis('equal') # sets pie into a circle type shape
 
 plt.show()
-"""
+
 
 # adjusting plot contours to better reflect reality
-"""
+
 colors_list = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue', 'lightgreen', 'pink']
 explode_list = [0.1, 0, 0, 0, 0.1, 0.1] # ratios for wedge separating continents
 
@@ -129,7 +129,7 @@ plt.axis('equal')
 plt.legend(labels=df_continents.index, loc='upper left')
 
 plt.show()
-"""
+
 
 # oh my god, it's beautiful!!
 # the exploder actually nudges it out of the pie an inch!
@@ -137,7 +137,7 @@ plt.show()
 ################################
 # Q1: Groupby, 2013 Pie Charts #
 ################################
-"""
+
 df_can_13 = df_can[['Continent', '2013']]
 df_can_13.head()
 
@@ -167,7 +167,7 @@ plt.axis('equal')
 plt.legend(labels=df_continents.index, loc='upper left')
 
 plt.show()
-"""
+
 
 #############
 # Box Plots #
@@ -178,14 +178,14 @@ df_japan = df_can.loc[['Japan'], years].transpose()
 df_japan.head()
 
 # reverting back to the ole' box plot
-"""
+
 df_japan.plot(kind='box', figsize=(8,6))
 
 plt.title('Box plot of Japanese Immigrants from 1980 - 2013')
 plt.ylabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 # descriptive stats for japan
 df_japan.describe()
@@ -201,7 +201,7 @@ df_CI.head()
 df_CI.describe()
 
 # plotting countries' spreads side by side
-"""
+
 df_CI.plot(kind='box', figsize=(8,6))
 
 plt.title('Box plot of Chinese & Indian Immigrants from 1980 - 2013')
@@ -209,23 +209,23 @@ plt.ylabel('Number of Immigrants')
 
 plt.show()
 # distribution is wayy wider for China.
-"""
+
 
 # horizontal plots are another way to go
 # we merely flip axes labels
-"""
+
 df_CI.plot(kind='box', figsize=(10, 7), color='blue', vert=False)
 
 plt.title('Box plot of Chinese & Indian Immigrants from 1980 - 2013')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 ############
 # Subplots #
 ############
-"""
+
 # grids and panels
 fig = plt.figure() # creating figure
 
@@ -245,7 +245,7 @@ ax1.set_xlabel('Number of Immigrants')
 ax1.set_ylabel('Countries')
 
 plt.show()
-"""
+
 
 #################################
 # Q3: top 15, grouped by decade #
@@ -288,14 +288,14 @@ new_df.describe()
 # new_df.head()
 
 # plotting decades' spreads side by side
-"""
+
 new_df.plot(kind='box', figsize=(8,6))
 
 plt.title('Box plot of Top 15 Immigrant Countries, by decade (from 1980 - 2013)')
 plt.ylabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 ################
 # Scatter Plot #
@@ -303,7 +303,7 @@ plt.show()
 
 # collapsing each year column into a single aggregated row
 df_tot = pd.DataFrame(df_can[years].sum(axis=0))
-# print(df_tot.head())
+print(df_tot.head())
 
 # Changing year types to int, to measure incremental effects when regressing
 df_tot.index = map(int, df_tot.index)
@@ -315,10 +315,10 @@ df_tot.reset_index(inplace = True)
 df_tot.columns = ['year', 'total']
 
 # viewing the final outputted dataset creation
-df_tot.head()
+print(df_tot.head())
 
 # finally, compiling our plot
-"""
+
 df_tot.plot(kind='scatter', x='year', y='total', figsize=(10, 6), color='darkblue')
 
 plt.title('Total Immigration to Canada from 1980 - 2013')
@@ -326,16 +326,21 @@ plt.xlabel('Year')
 plt.ylabel('Number of Immigrants')
 
 plt.show()
-"""
-
+'''
 # grabbing columns into arrays for plotting fit line
-x = df_tot['year']   # year array for x-axis fit
-y = df_tot['total']  # total for y-axis fit
-fit = np.polyfit(x, y, deg=1)
-fit
+
+# this method for subsetting doesn't yield arrays # avoid.
+# x = df_tot['year']   # year array for x-axis fit
+# y = df_tot['total']  # total for y-axis fit
+
+print(x)
+print(y)
+
+fit = np.polyfit(x, y, 1, full=True)
+print(fit)
 
 # plotting a more souped up grpah, w/ fit line
-"""
+
 df_tot.plot(kind='scatter', x='year', y='total', figsize=(10, 6), color='darkblue')
 
 plt.title('Total Immigration to Canada from 1980 - 2013')
@@ -347,7 +352,7 @@ plt.plot(x, fit[0] * x + fit[1], color='red') # recall x is the years variable
 plt.annotate('y={0:.0f} x + {1:.0f}'.format(fit[0], fit[1]), xy=(2000, 150000))
 # fit[0] and fit[1] extracts the coefficients for use in plotting
 plt.show()
-"""
+'''
 # printing out our the best fit line
 # print('No. Immigrants = {0:.0f} * Year + {1:.0f}'.format(fit[0], fit[1]))
 # .0f is a way of formatting decimals when calling vars into strings
@@ -377,7 +382,7 @@ df_total.head()
 
 
 # generating the scatterplot total vs year
-"""
+
 df_total.plot(kind='scatter', x='year', y='total', figsize=(10, 6), color='darkblue')
 
 plt.title('Total Immigration From Nordic Countries to Canada from 1980 - 2013')
@@ -385,7 +390,7 @@ plt.xlabel('Year')
 plt.ylabel('Number of Immigrants')
 
 plt.show()
-"""
+
 # no strong upward or downward trajectory
 # if you fitted a line across the years, it would pretty much be flat.
 
@@ -413,7 +418,7 @@ norm_brazil = (df_can_t['Brazil'] - df_can_t['Brazil'].min()) / (df_can_t['Brazi
 norm_argentina = (df_can_t['Argentina'] - df_can_t['Argentina'].min()) / (df_can_t['Argentina'].max() - df_can_t['Argentina'].min())
 
 # now, setting up our scatterplot for the respective countries
-"""
+
 ax0 = df_can_t.plot(kind='scatter',
                     x='Year',
                     y='Brazil',
@@ -438,7 +443,7 @@ ax0.set_title('Immigration From Brazil and Argentina from 1980 - 2013')
 ax0.legend(['Brazil', 'Argentina'], loc='upper left', fontsize='x-large')
 
 plt.show()
-"""
+
 
 ####################################
 # Q5: China and India Bubble Plots #

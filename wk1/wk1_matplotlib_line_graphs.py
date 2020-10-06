@@ -155,8 +155,8 @@ haiti = df_can.loc['Haiti', years]
 haiti.head()
 # prints/ saves haiti row data as a series
 
-# haiti.plot()
-# plt.show()
+haiti.plot()
+plt.show()
 # haitian inflows hella spiked in aroun 2011-2012
 
 # recalibrating indices to numeric values integers for plotting purposes

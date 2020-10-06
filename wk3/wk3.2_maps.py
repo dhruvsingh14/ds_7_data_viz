@@ -69,14 +69,14 @@ world_map.save('world_map.html')
 #########################
 # C. Mapbox Bright Maps #
 #########################
-"""
+
 # creating a mapbox bright map
 world_map = folium.Map(tiles='Mapbox Bright')
 
 # displaying world map of canada
 world_map
 world_map.save('world_map.html')
-"""
+
 
 # well this didn't render ^, neither here nor online
 
@@ -123,7 +123,7 @@ sf_map.save('sf_map.html')
 
 
 # iteration 2: adding markers
-"""
+
 # declaring a feature group for plotting crime incidents, iteration 2
 incidents = folium.map.FeatureGroup()
 
@@ -148,10 +148,10 @@ sf_map.add_child(incidents)
 # displaying the map of sf, iteration 2
 sf_map
 sf_map.save('sf_map.html')
-"""
+
 
 # iteration 3: adding popup text
-"""
+
 # declaring a new feature group, iteration 3
 incidents = folium.map.FeatureGroup()
 
@@ -184,10 +184,10 @@ sf_map.add_child(incidents)
 # displaying the map of sf, iteration 3
 sf_map
 sf_map.save('sf_map.html')
-"""
+
 
 # iteration 4: reducing clutter
-"""
+
 # creating a map and visualizing it
 sf_map = folium.Map(location=[latitude, longitude], zoom_start=12)
 
@@ -208,12 +208,12 @@ for lat, lng, label in zip(df_incidents.Y, df_incidents.X, df_incidents.Category
 # displaying the map of sf, iteration 4
 sf_map
 sf_map.save('sf_map.html')
-"""
+
 
 from folium import plugins
 
 # iteration 5, starting afresh with a clean copy of sf map
-"""
+
 sf_map = folium.Map(location=[latitude, longitude], zoom_start=12)
 
 # declaring a cluster object for the incidents listed herein
@@ -231,7 +231,7 @@ for lat, lng, label in zip(df_incidents.Y, df_incidents.X, df_incidents.Category
 # displaying the map of sf, iteration 4
 sf_map
 sf_map.save('sf_map.html')
-"""
+
 
 ###################
 # Choropleth Maps #
@@ -274,8 +274,8 @@ years = list(map(str, range(1980, 2014)))
 df_can.head()
 
 # downloading GeoJson file using wget
-# url = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/world_countries.json'
-# wget.download(url, 'world_countries.json')
+url = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/world_countries.json'
+wget.download(url, 'world_countries.json')
 
 # print('GeoJSON file downloaded!')
 
@@ -284,7 +284,7 @@ world_geo = r'world_countries.json'
 
 # iteration 1
 # creating a simple world map
-"""
+
 world_map = folium.Map(location=[0,0], zoom_start=2, tiles='Mapbox Bright')
 
 world_map
@@ -306,7 +306,7 @@ world_map.choropleth(
 # displaying map
 world_map
 world_map.save('world_map.html')
-"""
+
 
 # iteration 2
 # geojson file being read in

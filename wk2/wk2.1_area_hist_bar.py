@@ -97,7 +97,7 @@ df_top5.head()
 df_top5.index = df_top5.index.map(int) # changing index to integer for plotting purposes
 # not fully sure what changing index to integer accomplishes (yet)
 
-"""
+
 df_top5.plot(kind='area',
             stacked=False,
             figsize=(20, 10), # tells what size to adjust window to
@@ -108,9 +108,9 @@ plt.ylabel('Numer of Immigrants')
 plt.xlabel('Years')
 
 plt.show()
-"""
 
-"""
+
+
 # tweaking alpha transparency value
 df_top5.plot(kind='area',
             alpha=0.25, # 0-1 scale, default a= 0.5
@@ -123,14 +123,14 @@ plt.ylabel('Numer of Immigrants')
 plt.xlabel('Years')
 
 plt.show()
-"""
+
 
 # Two types of plotting
 
 # option 1, using scripting layer, procedural, used so far
 # option 2, object oriented, more flexibility, preferred
 
-"""
+
 ax = df_top5.plot(kind='area', alpha=0.35, figsize=(20,10))
 
 ax.set_title('Immigration Trend of Top 5 Countries')
@@ -138,14 +138,14 @@ ax.set_ylabel('Number of Immigrants')
 ax.set_xlabel('Years')
 
 plt.show()
-"""
+
 
 ####################################################
 # Q1: Scripting layer, stacked area plot, a = 0.45 #
 ####################################################
 
 # setting alpha transparency value to 0.45
-"""
+
 df_top5.plot(kind='area',
             alpha=0.45, # 0-1 scale, default a= 0.5
             stacked=False, # overlays plots
@@ -157,14 +157,14 @@ plt.ylabel('Numer of Immigrants')
 plt.xlabel('Years')
 
 plt.show()
-"""
+
 
 ###################################################
 # Q2: Artist layer, unstacked area plot, a = 0.55 #
 ###################################################
 
 # a = 0.55
-"""
+
 ax = df_top5.plot(kind='area', alpha=0.55, figsize=(20,10))
 
 ax.set_title('Immigration Trend of Top 5 Countries')
@@ -172,7 +172,7 @@ ax.set_ylabel('Number of Immigrants')
 ax.set_xlabel('Years')
 
 plt.show()
-"""
+
 
 ##############
 # Histograms #
@@ -183,7 +183,7 @@ df_can['2013'].head()
 
 # using numpy's histogram functionality to extract metrics
 # cut points, and count per interval
-"""
+
 count, bin_edges = np.histogram(df_can['2013'])
 
 # printing
@@ -200,12 +200,12 @@ plt.ylabel('Number of Countries')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 # iteration 2:
 # adding in x-ticks
 # 'bin_edges' shows the cut points on axis, here for number of immigrants
-"""
+
 count, bin_edges = np.histogram(df_can['2013'])
 
 df_can['2013'].plot(kind='hist', figsize=(8,5), xticks=bin_edges)
@@ -215,7 +215,7 @@ plt.ylabel('Number of Countries')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 # using x ticks applies more accurate labels to cutpoints
 # rather than generic width labels
 
@@ -223,10 +223,10 @@ plt.show()
 df_can.loc[['Denmark', 'Norway', 'Sweden'], years]
 
 # generating histogram
-"""
+
 df_can.loc[['Denmark', 'Norway', 'Sweden'], years].plot.hist()
 plt.show()
-"""
+
 
 # this plot isn't to our liking, and is in fact smushed in
 # transposing data to obtain better plot
@@ -236,7 +236,7 @@ df_t = df_can.loc[['Denmark', 'Norway', 'Sweden'], years].transpose()
 df_t.head()
 
 # generating histogram
-"""
+
 df_t.plot(kind='hist', figsize=(10,6))
 
 plt.title('Histogram of Immigration from Denmark, Norway, and Sweden from 1980 - 2013')
@@ -244,7 +244,7 @@ plt.ylabel('Number of Years')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 # can enhance clarity, for overlaying regions; and impose clearer x ticks
 
@@ -253,7 +253,7 @@ plt.show()
 count, bin_edges = np.histogram(df_t, 15)
 
 # un-stacking our histogram to promote transparency
-"""
+
 df_t.plot(kind ='hist',
           figsize=(10, 6),
           bins=15,
@@ -267,7 +267,7 @@ plt.ylabel('Number of Years')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 # much much sicker, it still doesn't show us consecutive years' patterns
 # though it does show absolute numbers
@@ -281,7 +281,7 @@ xmin = bin_edges[0] - 10
 xmax = bin_edges[-1] + 10
 
 # stacked plot
-"""
+
 df_t.plot(kind ='hist',
           figsize=(10, 6),
           bins=15,
@@ -296,7 +296,7 @@ plt.ylabel('Number of Years')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 # here it is the width from the base to the top that implies the column's count
 # ie, its difference, rather than it's distance from the x-axis
 
@@ -313,7 +313,7 @@ df_t2.head()
 
 count, bin_edges = np.histogram(df_t2, 15)
 
-"""
+
 # plotting unstacked, overlayed histogram, with alpha = 0.35
 df_t2.plot(kind ='hist',
           figsize=(10, 6),
@@ -328,7 +328,7 @@ plt.ylabel('Number of Years')
 plt.xlabel('Number of Immigrants')
 
 plt.show()
-"""
+
 
 ##############
 # Bar Charts #
@@ -339,7 +339,7 @@ df_iceland = df_can.loc['Iceland', years]
 df_iceland.head()
 
 # plotting a preliminary chart
-"""
+
 df_iceland.plot(kind='bar', figsize=(10, 6))
 
 plt.xlabel('Year')
@@ -347,11 +347,11 @@ plt.ylabel('Number of Immigrants')
 plt.title('Icelandic immigrants to Canada from 1980 to 2013')
 
 plt.show()
-"""
+
 
 
 # annotating plot further with arrow
-"""
+
 df_iceland.plot(kind='bar', figsize=(10, 6), rot=90)
 
 plt.xlabel('Year')
@@ -368,10 +368,10 @@ plt.annotate('', # blank, no text here
 )
 
 plt.show()
-"""
+
 
 # adding text rotation and text annotation to our plot
-"""
+
 df_iceland.plot(kind='bar', figsize=(10, 6), rot=90)
 
 plt.xlabel('Year')
@@ -397,7 +397,7 @@ plt.annotate('2008 - 2011 Financial Crisis', # text to display
 
 
 plt.show()
-"""
+
 
 ###########################################################
 # Q4: Scripting layer, swapping axes, horizontal bar plot #

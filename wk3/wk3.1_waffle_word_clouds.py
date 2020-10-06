@@ -94,10 +94,10 @@ category_proportions = [(float(value) / total_values) for value in df_dsn['Total
 
 # printing these proportions for each value of total yearly immigration
 # relative to total immigration from country to canada
-"""
+
 for i, proportion in enumerate(category_proportions):
     print (df_dsn.index.values[i] + ': ' + str(proportion))
-"""
+
 
 # preparing to define the dimensions of our chart
 width = 40 # width of chart
@@ -109,10 +109,10 @@ total_num_tiles = width * height # total number of tiles in grid
 tiles_per_category = [round(proportion * total_num_tiles) for proportion in category_proportions]
 
 # printing out our number of tiles per category
-"""
+
 for i, tiles in enumerate(tiles_per_category):
     print (df_dsn.index.values[i] + ': ' + str(tiles))
-"""
+
 
 # declaring empty matrix to prepare for waffle chart
 waffle_chart = np.zeros((height, width))
@@ -138,7 +138,7 @@ for col in range(width):
 waffle_chart
 
 # preparing to map waffle to a visual
-"""
+
 fig = plt.figure()
 
 # using matshow to display the waffle chart
@@ -147,11 +147,11 @@ plt.matshow(waffle_chart, cmap=colormap)
 plt.colorbar()
 
 plt.show()
-"""
+
 
 # prettyfying or souping up the chart, iteration 1
 # declaring a new figure object
-"""
+
 fig = plt.figure()
 
 # using matshow to display the waffle chart
@@ -173,11 +173,11 @@ plt.xticks([])
 plt.yticks([])
 
 plt.show()
-"""
+
 
 # prettyfying, souping up the chart, iteration 2
 # declaring a new figure object
-"""
+
 fig = plt.figure()
 
 # using matshow to display the waffle chart
@@ -219,7 +219,7 @@ plt.legend(handles=legend_handles,
 plt.show()
 
 # awesome, the legend really adds a cool element
-"""
+
 
 # creating instead a function that generates our waffle chart
 def create_waffle_chart(categories, values, height, width, colormap, value_sign=''):
@@ -328,8 +328,8 @@ import wget
 # print('Wordcloud is installed and imported!')
 
 # downloading text file using wget
-# url = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/alice_novel.txt'
-# wget.download(url, 'alice_novel.txt')
+url = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/alice_novel.txt'
+wget.download(url, 'alice_novel.txt')
 
 # opening text file and reading it into a variable called alice_novel
 alice_novel = open('alice_novel.txt', 'r').read()
@@ -351,14 +351,14 @@ alice_wc = WordCloud(
 # generating the word cloud
 alice_wc.generate(alice_novel)
 
-"""
+
 # actually plotting the cloud display, iteration 1
 plt.imshow(alice_wc, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
 
-"""
+
+
 # resizing the word cloud, iteration 2
 fig = plt.figure()
 fig.set_figwidth(14)  # setting width
@@ -368,9 +368,9 @@ fig.set_figheight(18) # setting height
 plt.imshow(alice_wc, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
 
-"""
+
+
 # scrapping unnecessary words, iteration 3
 stopwords.add('said') # adding said to stopwords
 
@@ -385,19 +385,19 @@ fig.set_figheight(18) # setting height
 plt.imshow(alice_wc, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
+
 
 # using wordcloud to superimpose cloud visuals onto a mask image
 
 # downloading image
-# url2 = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Images/alice_mask.png'
-# wget.download(url2, 'alice_mask.png')
+url2 = 'https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Images/alice_mask.png'
+wget.download(url2, 'alice_mask.png')
 
 # reading in and saving mask image file
 alice_mask = np.array(Image.open('alice_mask.png'))
 # print('Image downloaded and saved!')
 
-"""
+
 # opening and displaying image shell
 fig = plt.figure()
 fig.set_figwidth(14)  # setting width
@@ -406,9 +406,9 @@ fig.set_figheight(18) # setting height
 plt.imshow(alice_mask, cmap=plt.cm.gray, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
 
-"""
+
+
 # declaring a word cloud object, iteration 4
 alice_wc = WordCloud(background_color='white', max_words=2000, mask=alice_mask, stopwords=stopwords)
 
@@ -423,7 +423,7 @@ fig.set_figheight(18) # setting height
 plt.imshow(alice_wc, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
+
 
 # switching gears back to regression plots, and canada data
 df_can.head()
@@ -445,7 +445,7 @@ for country in df_can.index.values:
 # displaying generated text
 word_string
 
-"""
+
 # creating the word cloud, no stopwords
 wordcloud = WordCloud(background_color='white').generate(word_string)
 # print('Word cloud created!')
@@ -458,7 +458,7 @@ fig.set_figheight(18) # setting height
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis('off')
 plt.show()
-"""
+
 
 ####################
 # Regression Plots #
@@ -484,32 +484,32 @@ df_tot.columns = ['year', 'total']
 # viewing outputted dataframe
 df_tot.head()
 
-"""
+
 # plot 1, using regplot
 ax = sns.regplot(x='year', y='total', data=df_tot)
 plt.show()
-"""
 
-"""
+
+
 # plot 2, switching color to green
 ax = sns.regplot(x='year', y='total', data=df_tot, color='green')
 plt.show()
-"""
 
-"""
+
+
 # plot 3, changing markers to + signs
 ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+')
 plt.show()
-"""
 
-"""
+
+
 # plot 4, blowing up the plot size
 plt.figure(figsize=(15,10))
 ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+')
 plt.show()
-"""
 
-"""
+
+
 # plot 5, blowing up marker size, adding axis labels, title
 plt.figure(figsize=(15,10))
 ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', scatter_kws={'s': 200})
@@ -517,9 +517,9 @@ ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', sc
 ax.set(xlabel='Year', ylabel='Total Immigration') # adding axes labels
 ax.set_title('Total Immigration to Canada from 1980 - 2013') # add title
 plt.show()
-"""
 
-"""
+
+
 # plot 6, increasing font size of tickmark labels, title, axes
 plt.figure(figsize=(15,10))
 sns.set(font_scale=1.5)
@@ -529,9 +529,9 @@ ax.set(xlabel='Year', ylabel='Total Immigration') # adding axes labels
 ax.set_title('Total Immigration to Canada from 1980 - 2013') # add title
 
 plt.show()
-"""
 
-"""
+
+
 # plot 6.1, optional features: white background
 plt.figure(figsize=(15,10))
 sns.set(font_scale=1.5)
@@ -542,9 +542,9 @@ ax.set(xlabel='Year', ylabel='Total Immigration') # adding axes labels
 ax.set_title('Total Immigration to Canada from 1980 - 2013') # add title
 
 plt.show()
-"""
 
-"""
+
+
 # plot 6.2, optional features: gridlines
 plt.figure(figsize=(15,10))
 sns.set(font_scale=1.5)
@@ -555,7 +555,7 @@ ax.set(xlabel='Year', ylabel='Total Immigration') # adding axes labels
 ax.set_title('Total Immigration to Canada from 1980 - 2013') # add title
 
 plt.show()
-"""
+
 
 
 ############################################################
@@ -585,7 +585,7 @@ dsn_tot.columns = ['year', 'total']
 # viewing outputted dataframe
 dsn_tot.head()
 
-"""
+
 # creating a fleshed out regression plot for our data
 plt.figure(figsize=(15,10))
 sns.set(font_scale=1.5)
@@ -595,7 +595,7 @@ ax.set(xlabel='Year', ylabel='Total Immigration') # adding axes labels
 ax.set_title('Total Immigration from Nordic Countries to Canada from 1980 - 2013') # add title
 
 plt.show()
-"""
+
 
 
 
